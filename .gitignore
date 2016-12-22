@@ -1,0 +1,17 @@
+# Runtime data
+pids
+*.pid
+*.seed
+
+lib-cov
+
+logs
+*.log
+npm-debug.log*
+
+coverage/*
+build/*
+node_modules/*
+dist
+.idea
+.DS_Store
