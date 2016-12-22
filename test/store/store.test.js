@@ -4,26 +4,24 @@ import expect from 'expect';
 import {createStore} from 'redux';
 import rootReducer from '../../src/reducers';
 import initialState from '../../src/reducers/initialState';
-import * as testActions from '../../src/actions/sampleActions';
+import * as gamesActions from '../../src/actions/gamesActions';
 
 describe('Store', () => {
-  it('Should handle creating courses', () => {
+  it('Should handle getAllGames', () => {
     // arrange
     const store = createStore(rootReducer, initialState);
-    const sampleData = {
-      title: 'Hello World'
-    };
+    const games = [{
+      id: '1',
+      name: 'Table tennis',
+      img: '/images/table-tennis.png'
+    }];
     // make action
-    const action = testActions.loadSamplesSuccess(sampleData);
+    const action = gamesActions.getAllGamesSuccess(games);
     store.dispatch(action);
 
     // assert
-    const actual = store.getState().samples;
+    const actual = store.getState().games;
 
-    const expected = {
-      title: 'Hello World'
-    };
-
-    expect(actual).toEqual(expected);
+    expect(actual).toEqual(games);
   });
 });

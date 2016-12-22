@@ -1,4 +1,4 @@
 export default {
-  samples: [],
+  games: [],
   ajaxCallsInProgress: 0
 };

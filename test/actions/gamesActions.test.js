@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as sampleActions from '../../src/actions/sampleActions';
+import * as gamesActions from '../../src/actions/gamesActions';
 import * as types from '../../src/actions/actionTypes';
 
 import thunk from 'redux-thunk';
@@ -9,12 +9,12 @@ import configureMockStore from 'redux-mock-store';
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
-describe('Async Actions', () => {
+describe('Games Async Actions', () => {
   afterEach(() => {
     nock.cleanAll();
   });
 
-  it('should create BEGIN_AJAX_CALL and SAMPLE_ACTION when loading', (done) => {
+  it('should create BEGIN_AJAX_CALL and LOAD_GAMES_SUCCESS when loading games', (done) => {
     // Here's an example call to nock.
     // nock('http://example.com/')
     //   .get('/test')
@@ -22,14 +22,14 @@ describe('Async Actions', () => {
 
     const expectedActions = [
       {type: types.BEGIN_AJAX_CALL},
-      {type: types.SAMPLE_ACTION, body: {sample: [{id: 1, firstName: 'Hello', lastName: 'World'}]}}
+      {type: types.LOAD_GAMES_SUCCESS, body: []}
     ];
 
     const store = mockStore({courses: []}, expectedActions, done);
-    store.dispatch(sampleActions.loadSamples()).then(() => {
+    store.dispatch(gamesActions.getAllGames()).then(() => {
       const actions = store.getActions();
       expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
-      expect(actions[1].type).toEqual(types.SAMPLE_ACTION);
+      expect(actions[1].type).toEqual(types.LOAD_GAMES_SUCCESS);
       done();
     });
   });

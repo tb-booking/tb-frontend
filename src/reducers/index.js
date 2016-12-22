@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import samples from './sampleReducer';
+import games from './gamesReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 
 const rootReducer = combineReducers({
-  samples,
+  games,
   ajaxCallsInProgress
 });
 

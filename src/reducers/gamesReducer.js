@@ -1,9 +1,9 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function sampleReducer(state = initialState.samples, action) {
+export default function sampleReducer(state = initialState.games, action) {
   switch (action.type) {
-    case types.SAMPLE_ACTION:
+    case types.LOAD_GAMES_SUCCESS:
       return action.payload;
 
     default:
