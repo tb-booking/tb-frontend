@@ -1,7 +1,7 @@
 {
-  "name": "redux-boilerplate",
-  "version": "1.0.0",
-  "description": "Redux boilerplate",
+  "name": "tb-frontend",
+  "version": "0.1.0",
+  "description": "Frontend for tennis-billiard booking project",
   "scripts": {
     "dev": "babel-node tools/devServer.js",
     "dev:webpack": "webpack-dev-server --hot --inline --progress --colors --devtool eval --env=develop --port=8000",
@@ -73,5 +73,16 @@
     "webpack-dev-server": "^1.16.2",
     "webpack-encoding-plugin": "^0.2.0",
     "webpack-hot-middleware": "^2.13.2"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tb-booking/tb-frontend.git"
+  },
+  "author": "tb-booking",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tb-booking/tb-frontend/issues"
+  },
+  "homepage": "https://github.com/tb-booking/tb-frontend#readme"
 }
