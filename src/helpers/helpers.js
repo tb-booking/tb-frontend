@@ -6,3 +6,11 @@ export const sampleHelper = (data) => {
     };
   });
 };
+
+export const loadImage = (imgName) => {
+  try {
+    return require(`../../images/${imgName}`);
+  } catch (e) {
+    return require('../../images/imageNotFound.jpg');
+  }
+};
