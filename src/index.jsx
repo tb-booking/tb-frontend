@@ -7,8 +7,8 @@ import configureStore from './store/configureStore';
 import routes from './routes';
 import {getAllGames} from './actions/gamesActions';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/toastr/build/toastr.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'toastr/build/toastr.min.css';
 import './styles/styles.scss';
 
 const store = configureStore();

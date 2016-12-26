@@ -4,12 +4,12 @@ const games = [
   {
     id: '1',
     name: 'Table tennis',
-    img: '/images/table-tennis.png'
+    img: 'tennis.jpg'
   },
   {
     id: '2',
     name: 'Billiard',
-    img: '/images/billiard.png'
+    img: 'billiard.jpg'
   }
 ];
 

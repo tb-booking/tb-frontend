@@ -1,8 +1,10 @@
 #app {
-  min-width: 550px;
+  min-width: 500px;
   max-width: 950px;
   margin: 0 auto;
 }
-nav {
-  padding-top: 20px;
+
+.page-header {
+  padding-bottom: 0;
+  margin: 20px 0 20px;
 }

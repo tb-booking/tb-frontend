@@ -8,7 +8,7 @@ class GamesPage extends Component {
     const {games} = this.props;
 
     return (
-      <div className="jumbotron">
+      <div className="">
         <h1>Games Page</h1>
         <GamesList games={games} />
       </div>

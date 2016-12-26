@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react';
+import {loadImage} from '../../helpers/helpers';
 
 const CourseListRow = ({game}) => {
   return (
     <tr>
-      <td>{game.id}</td>
+      <td><img src={loadImage(game.img)} /></td>
       <td>{game.name}</td>
-      <td>{game.img}</td>
     </tr>
   );
 };

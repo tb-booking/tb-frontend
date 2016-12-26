@@ -6,9 +6,8 @@ const GamesList = ({games}) => {
     <table className="table">
       <thead>
         <tr>
-          <th>id</th>
+          <th>Img</th>
           <th>game</th>
-          <th>img url</th>
         </tr>
       </thead>
       <tbody>
