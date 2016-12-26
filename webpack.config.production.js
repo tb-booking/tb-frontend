@@ -9,7 +9,6 @@ const GLOBALS = {
 };
 
 module.exports = {
-  debug: true,
   devtool: 'source-map',
   noInfo: false,
   entry: path.resolve(__dirname, 'src/index'),
@@ -49,8 +48,8 @@ module.exports = {
         loaders: ['style', 'css', 'sass']
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url?limit=1000000'
+        test: /\.(png|jpg|jpeg|gif|ico)$/,
+        loader: 'url?limit=10000&name=./imgs/[hash].[ext]'
       },
       {
         test: /\.json$/,
@@ -58,19 +57,19 @@ module.exports = {
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
+        loader: 'file?name=./fonts/[hash].[ext]'
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: 'url?prefix=font/&limit=5000'
+        loader: 'url?prefix=font/&limit=5000&name=./fonts/[hash].[ext]'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
+        loader: 'url?limit=10000&mimetype=application/octet-stream&name=./fonts/[hash].[ext]'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        loader: 'url?limit=10000&mimetype=image/svg+xml&name=./imgs/[hash].[ext]'
       }
     ]
   }
