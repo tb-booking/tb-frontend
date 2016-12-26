@@ -12,7 +12,7 @@ import 'toastr/build/toastr.min.css';
 import './styles/styles.scss';
 
 const store = configureStore();
-store.dispatch(getAllGames());
+// store.dispatch(getAllGames());
 
 render(
   <Provider store={store}>

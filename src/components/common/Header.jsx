@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, IndexLink} from 'react-router';
+import {IndexLink} from 'react-router';
 import NavItem from './NavItem';
 
 const Header = () => {
@@ -11,9 +11,11 @@ const Header = () => {
             <IndexLink className="navbar-brand" to="/">TB-booking</IndexLink>
           </div>
 
-          <div className="collapse navbar-collapse">
+          <div className="navbar-collapse">
             <ul className="nav navbar-nav navbar-right">
               <NavItem to="/">Home</NavItem>
+              <NavItem to="/tennis">Tennis</NavItem>
+              <NavItem to="/billiard">Billiard</NavItem>
               <NavItem to="/about">About</NavItem>
             </ul>
           </div>

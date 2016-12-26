@@ -2,12 +2,12 @@ import delay from './delay';
 
 const games = [
   {
-    id: '1',
+    id: 'tennis',
     name: 'Table tennis',
     img: 'tennis.jpg'
   },
   {
-    id: '2',
+    id: 'billiard',
     name: 'Billiard',
     img: 'billiard.jpg'
   }

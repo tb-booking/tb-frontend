@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './about.scss';
 
-class AboutPage extends React.Component {
+class AboutPage extends Component {
   render() {
     return (
       <div className="jumbotron">

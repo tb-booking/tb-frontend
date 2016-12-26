@@ -11,3 +11,10 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.jsx?]
+quote_type = single
+
+# HTML
+[*.html]
+quote_type = double

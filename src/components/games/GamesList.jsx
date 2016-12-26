@@ -1,18 +1,19 @@
 import React, {PropTypes} from 'react';
 import GamesListRow from './GamesListRow';
 
-const GamesList = ({games}) => {
+const GamesList = ({games, onGameRowClick}) => {
   return (
-    <table className="table">
+    <table id="games-list" className="table table-hover">
       <thead>
         <tr>
-          <th>Img</th>
+          <th />
           <th>game</th>
+          <th>status</th>
         </tr>
       </thead>
       <tbody>
-        {games.map(game =>
-          <GamesListRow key={game.id} game={game} />
+        {Object.keys(games).map((game) =>
+          <GamesListRow key={game} game={games[game]} onGameRowClick={onGameRowClick} />
         )}
       </tbody>
     </table>
@@ -20,7 +21,8 @@ const GamesList = ({games}) => {
 };
 
 GamesList.propTypes = {
-  games: PropTypes.array.isRequired
+  games: PropTypes.object.isRequired,
+  onGameRowClick: PropTypes.func.isRequired
 };
 
 export default GamesList;
