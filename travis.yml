@@ -1,0 +1,8 @@
+install:
+  - npm i
+language: node_js
+node_js:
+  - "7.0.0"
+script:
+  - npm test
+  - npm run build
