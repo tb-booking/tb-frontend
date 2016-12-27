@@ -13,7 +13,6 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "prebuild": "npm-run-all clean-dist lint test",
     "build": "babel-node tools/build.js",
-    "postbuild": "npm start",
     "start": "babel-node tools/prodServer.js"
   },
   "dependencies": {
