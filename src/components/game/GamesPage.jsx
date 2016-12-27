@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const GamesList = ({gameId}) => {
+const GamePage = ({gameId}) => {
   return (
     <div>
       Main Games Page for {gameId}
@@ -8,8 +8,8 @@ const GamesList = ({gameId}) => {
   );
 };
 
-GamesList.propTypes = {
+GamePage.propTypes = {
   gameId: PropTypes.string.isRequired
 };
 
-export default GamesList;
+export default GamePage;

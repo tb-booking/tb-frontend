@@ -9,6 +9,7 @@ const CourseListRow = ({game, onGameRowClick}) => {
       <tr onClick={onGameRowClick}>
         <td><img src={loadImage(game.img)} /></td>
         <td><h3>{game.name}</h3></td>
+        <td />
       </tr>
   );
 };
