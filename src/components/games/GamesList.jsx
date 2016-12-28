@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import GamesListRow from './GamesListRow';
 
 const GamesList = ({games, onGameRowClick}) => {
+  // debugger
   return (
     <table id="games-list" className="table table-hover">
       <thead>

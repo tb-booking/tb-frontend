@@ -5,14 +5,14 @@ import {Router, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 import routes from './routes';
-import {getAllGames} from './actions/gamesActions';
+import {getAllGamesSchedules} from './actions/gamesSchedulesActions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'toastr/build/toastr.min.css';
 import './styles/styles.scss';
 
 const store = configureStore();
-// store.dispatch(getAllGames());
+store.dispatch(getAllGamesSchedules());
 
 render(
   <Provider store={store}>

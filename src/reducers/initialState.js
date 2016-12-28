@@ -11,5 +11,6 @@ export default {
       img: 'billiard.jpg'
     }
   },
+  gamesSchedules: [],
   ajaxCallsInProgress: 0
 };

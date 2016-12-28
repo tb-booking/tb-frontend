@@ -1,5 +1,5 @@
 import expect from 'expect';
-import * as gamesActions from '../../src/actions/gamesActions';
+import * as gamesSchedulesActions from '../../src/actions/gamesSchedulesActions';
 import * as types from '../../src/actions/actionTypes';
 
 import thunk from 'redux-thunk';
@@ -14,7 +14,7 @@ describe('Games Async Actions', () => {
     nock.cleanAll();
   });
 
-  it('should create BEGIN_AJAX_CALL and LOAD_GAMES_SUCCESS when loading games', (done) => {
+  it('should create BEGIN_AJAX_CALL and LOAD_GAMES_SCHEDULES_SUCCESS when loading games', (done) => {
     // Here's an example call to nock.
     // nock('http://example.com/')
     //   .get('/test')
@@ -22,14 +22,14 @@ describe('Games Async Actions', () => {
 
     const expectedActions = [
       {type: types.BEGIN_AJAX_CALL},
-      {type: types.LOAD_GAMES_SUCCESS, body: []}
+      {type: types.LOAD_GAMES_SCHEDULES_SUCCESS, body: []}
     ];
 
     const store = mockStore({courses: []}, expectedActions, done);
-    store.dispatch(gamesActions.getAllGames()).then(() => {
+    store.dispatch(gamesSchedulesActions.getAllGamesSchedules()).then(() => {
       const actions = store.getActions();
       expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);
-      expect(actions[1].type).toEqual(types.LOAD_GAMES_SUCCESS);
+      expect(actions[1].type).toEqual(types.LOAD_GAMES_SCHEDULES_SUCCESS);
       done();
     });
   });

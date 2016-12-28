@@ -16,7 +16,6 @@ class GamesPage extends Component {
 
   render() {
     const {games} = this.props;
-
     return (
       <GamesList
         games={games}
@@ -29,7 +28,7 @@ GamesPage.propTypes = {
   games: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     games: state.games
   };

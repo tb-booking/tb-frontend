@@ -4,24 +4,34 @@ import expect from 'expect';
 import {createStore} from 'redux';
 import rootReducer from '../../src/reducers';
 import initialState from '../../src/reducers/initialState';
-import * as gamesActions from '../../src/actions/gamesActions';
+import * as gamesSchedulesActions from '../../src/actions/gamesSchedulesActions';
 
 describe('Store', () => {
-  it('Should handle getAllGames', () => {
+  it('Should handle getAllGamesSchedules', () => {
     // arrange
     const store = createStore(rootReducer, initialState);
-    const games = [{
-      id: '1',
-      name: 'Table tennis',
-      img: '/images/table-tennis.png'
-    }];
+    const gamesSchedules = (() => {
+      const d = new Date();
+      const today = d.toISOString().substr(0, 10);
+
+      return [
+        {
+          id: 1,
+          gameId: 'tennis',
+          date: today,
+          startBookTime: '14:00',
+          endBookTime: '15:00'
+        }
+      ];
+    })();
+
     // make action
-    const action = gamesActions.getAllGamesSuccess(games);
+    const action = gamesSchedulesActions.getAllGamesSchedulesSuccess(gamesSchedules);
     store.dispatch(action);
 
     // assert
-    const actual = store.getState().games;
+    const actual = store.getState().gamesSchedules;
 
-    expect(actual).toEqual(games);
+    expect(actual).toEqual(gamesSchedules);
   });
 });
