@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
+import {browserHistory, hashHistory} from 'react-router';
 import GamesList from './GamesList';
 import './games.scss';
 
@@ -11,7 +11,7 @@ class GamesPage extends Component {
   }
 
   redirectGamePage(game) {
-    browserHistory.push('/' + game);
+    hashHistory.push('/' + game);
   }
 
   render() {
