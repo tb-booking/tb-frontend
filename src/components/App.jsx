@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <Header />
+        <Header username={this.props.username} />
         {this.props.children}
       </div>
     );
@@ -14,12 +14,15 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  username: PropTypes.string,
+  loading: PropTypes.bool
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    loading: state.ajaxCallsInProgress > 0
+    loading: state.ajaxCallsInProgress > 0,
+    username: state.username
   };
 }
 

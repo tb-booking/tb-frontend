@@ -11,6 +11,7 @@ export default {
       img: 'billiard.jpg'
     }
   },
+  username: '',
   gamesSchedules: [],
   ajaxCallsInProgress: 0
 };

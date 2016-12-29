@@ -17,11 +17,13 @@
     "ghpages": "npm run build&&gh-pages -d dist"
   },
   "dependencies": {
+    "alertify.js": "^1.0.12",
     "babel-polyfill": "^6.20.0",
     "bootstrap": "^3.3.7",
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "jquery": "^3.1.1",
+    "js-cookie": "^2.1.3",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",

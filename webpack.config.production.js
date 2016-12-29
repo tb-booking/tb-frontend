@@ -30,7 +30,7 @@ module.exports = {
     new webpack.DefinePlugin(GLOBALS),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/index.ejs'),
-      favicon: path.join(__dirname, 'images/favicon.ico'),
+      favicon: path.join(__dirname, 'images/favicon.ico')
     }),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.DedupePlugin(),

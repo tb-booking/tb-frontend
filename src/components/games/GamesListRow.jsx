@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import {loadImage} from '../../helpers/helpers';
-import {Link} from 'react-router';
 
 const CourseListRow = ({game, onGameRowClick}) => {
   onGameRowClick = onGameRowClick.bind(this, game.id);
