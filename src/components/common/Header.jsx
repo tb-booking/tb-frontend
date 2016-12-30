@@ -12,7 +12,6 @@ const Header = ({username}) => {
             <IndexLink className="navbar-brand" to="/">TB-booking</IndexLink>
           </div>
 
-
           <div className="navbar-collapse">
             <UsernameItem username={username} />
 

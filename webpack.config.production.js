@@ -9,7 +9,6 @@ const GLOBALS = {
 };
 
 module.exports = {
-  devtool: 'source-map',
   noInfo: false,
   entry: path.resolve(__dirname, 'src/index'),
   target: 'web',
@@ -38,6 +37,10 @@ module.exports = {
       compress: {
         warnings: false
       }
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ],
   module: {
