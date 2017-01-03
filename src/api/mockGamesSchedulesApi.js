@@ -1,8 +1,8 @@
 import delay from './delay';
+import {formatDateAsDateString} from '../helpers/helpers';
 
 const gamesSchedules = (() => {
-  const d = new Date();
-  const today = d.toISOString().substr(0, 10);
+  const today = formatDateAsDateString(new Date());
 
   return [
     {
@@ -10,7 +10,14 @@ const gamesSchedules = (() => {
       gameId: 'tennis',
       date: today,
       startBookTime: '14:00',
-      endBookTime: '15:00'
+      endBookTime: '15:15'
+    },
+    {
+      id: 2,
+      gameId: 'tennis',
+      date: today,
+      startBookTime: '17:00',
+      endBookTime: '17:45'
     }
   ];
 })();

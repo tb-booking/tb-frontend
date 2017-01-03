@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
-import {loadImage} from '../../helpers/helpers';
+import {getImageUrl} from '../../helpers/helpers';
 
 const CourseListRow = ({game, onGameRowClick}) => {
   onGameRowClick = onGameRowClick.bind(this, game.id);
 
   return (
       <tr onClick={onGameRowClick}>
-        <td><img src={loadImage(game.img)} /></td>
+        <td><img src={getImageUrl(game.img)} /></td>
         <td><h3>{game.name}</h3></td>
         <td />
       </tr>
