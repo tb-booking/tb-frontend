@@ -1,13 +1,12 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 
-const ScheduleItem = ({timeRange}) => {
-  // debugger
-  return (
-    <tr>
-      <td>Item, {timeRange.startTime}, {timeRange.endTime}</td>
-    </tr>
-  );
-};
+class ScheduleItem extends Component {
+  componentDidMount() {
+  }
+
+  render() {
+  }
+}
 
 ScheduleItem.propTypes = {
   timeRange: PropTypes.object.isRequired

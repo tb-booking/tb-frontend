@@ -138,7 +138,7 @@
     "no-void": 1,
     "no-warning-comments": [1, { "terms": ["todo", "tofix"], "location": "start" }],
     "no-with": 1,
-    "radix": 1,
+    "radix": 0,
     "vars-on-top": 1,
     "wrap-iife": [1, "inside"],
     "yoda": [1, "never"],
@@ -216,7 +216,7 @@
     "space-in-parens": [1, "never"],
     "space-infix-ops": 1,
     "space-unary-ops": 0,
-    "spaced-comment": [1, "always", { "exceptions": ["eslint"] }],
+    "spaced-comment": [0, "always", {"exceptions": ["eslint"]}],
     "wrap-regex": 1,
 
     /* ECMAScript 6 */
@@ -231,7 +231,7 @@
     "max-len": [1, 150, 2],
     "max-params": 0,
     "max-statements": 0,
-    "no-bitwise": 1,
+    "no-bitwise": 0,
     "no-plusplus": 0,
 
     /* Babel */

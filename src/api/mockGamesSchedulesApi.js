@@ -1,5 +1,5 @@
 import delay from './delay';
-import {formatDateAsDateString} from '../helpers/helpers';
+import {formatDateAsDateString, convertTimeToSec} from '../helpers/helpers';
 
 const gamesSchedules = (() => {
   const today = formatDateAsDateString(new Date());
@@ -9,15 +9,22 @@ const gamesSchedules = (() => {
       id: 1,
       gameId: 'tennis',
       date: today,
-      startBookTime: '14:00',
-      endBookTime: '15:15'
+      startTime: convertTimeToSec('14:00'),
+      endTime: convertTimeToSec('15:15')
     },
     {
       id: 2,
       gameId: 'tennis',
       date: today,
-      startBookTime: '17:00',
-      endBookTime: '17:45'
+      startTime: convertTimeToSec('16:10'),
+      endTime: convertTimeToSec('16:35')
+    },
+    {
+      id: 3,
+      gameId: 'tennis',
+      date: today,
+      startTime: convertTimeToSec('17:00'),
+      endTime: convertTimeToSec('18:45')
     }
   ];
 })();

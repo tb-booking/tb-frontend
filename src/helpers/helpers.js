@@ -37,3 +37,24 @@ export const getImageUrl = (imgName) => {
     return require('../../images/imageNotFound.jpg');
   }
 };
+
+/**
+ * Converts seconds (from the beginning of the day) to readable time
+ * @param {number} sec - seconds amount
+ * @returns {string} - readable time (14:25)
+ */
+export const convertSecToTime = (sec) => {
+  const h = String('0' + ~~(sec / 3600)).slice(-2);
+  const m = String('0' + ~~((sec - h * 3600) / 60)).slice(-2);
+  return `${h}:${m}`;
+};
+
+/**
+ * Converts time string to seconds amount (from the beginning of the day)
+ * @param {string} time - readable time
+ * @returns {number} - seconds
+ */
+export const convertTimeToSec = (time) => {
+  const splitTime = time.split(':');
+  return (parseInt(splitTime[0]) * 60 + parseInt(splitTime[1])) * 60;
+};

@@ -1,32 +1,41 @@
 import React, {PropTypes} from 'react';
+import {convertSecToTime, convertTimeToSec} from '../../helpers/helpers';
 import ScheduleItem from './ScheduleItem';
 
-const ScheduleTable = () => {
-  const timeRanges = [];
-  const startTimeSec = 28800; // 08:00
-  const endTimeSec = 72000;   // 20:00
-  const timeInterval = 1800;   // 30 min
+const ScheduleTable = ({gameSchedules}) => {
+  const timePoints = [];
+  const startTimeSec = 32400; // 09:00
+  const endTimeSec = 75600;   // 20:00
+  const timeInterval = 3600;  // 1 hour
 
   let currentTime = startTimeSec;
+  let rangesAmount = (endTimeSec - startTimeSec) / timeInterval;
   let rangeId = 0;
   while (currentTime <= endTimeSec) {
-    timeRanges.push({
-      id: rangeId++,
-      startTime: currentTime,
-      endTime: currentTime + timeInterval
+    timePoints.push({
+      time: currentTime,
+      style: {top: (100 / rangesAmount * rangeId) + '%'}
     });
+    rangeId++;
     currentTime += timeInterval;
   }
 
   return (
-    <table id="game-schedule-table" className="table table-hover table-bordered">
-      <tbody>
-        {timeRanges.map(range =>
-          <ScheduleItem key={range.id} timeRange={range} />
-        )}
-      </tbody>
-    </table>
+    <div data-toggle="tooltip" data-placement="right" title="Tooltip on right" className="col-md-8 col-xs-8">
+      {timePoints.map((timePoint, timeIndex) =>
+        <div key={`time${timeIndex}`} className="schedule-time-item" style={timePoint.style}>{convertSecToTime(timePoint.time)}</div>
+      )}
+
+      <div className="schedule-day">
+asd
+      </div>
+    </div>
   );
 };
 
+ScheduleTable.propTypes = {
+  gameSchedules: PropTypes.array
+};
+
 export default ScheduleTable;
+

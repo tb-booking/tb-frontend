@@ -16,10 +16,12 @@ const Header = ({username}) => {
             <UsernameItem username={username} />
 
             <ul className="nav navbar-nav navbar-right">
+              <li className="divider-horizontal" />
               <NavItem to="/">Home</NavItem>
               <NavItem to="/tennis">Tennis</NavItem>
               <NavItem to="/billiard">Billiard</NavItem>
               <NavItem to="/about">About</NavItem>
+              <li className="divider-vertical" />
             </ul>
           </div>
         </div>

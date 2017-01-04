@@ -25,6 +25,8 @@ class GamePage extends Component {
       const newDate = new Date(e.date);
       this.setState({pickedDate: newDate});
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
   }
 
   render() {
@@ -32,13 +34,13 @@ class GamePage extends Component {
     return (
       <div className="row" id="game-schedule">
         <h1 className="text-center">{game.name}</h1>
-        <div className="col-md-4 text-center">
+        <div className="col-md-4 col-xs-5 text-center">
           <img src={getImageUrl(game.img)} />
           <div className="datepicker" />
           {this.state.pickedDate.toDateString()}
         </div>
-        <div className="col-md-8">
-          <ScheduleTable />
+        <div className="col-md-8 col-xs-7">
+          <ScheduleTable gameSchedules={this.props.gameSchedules} />
         </div>
       </div>
     );
