@@ -30,4 +30,17 @@
     -moz-border-radius: 2px;
     border-radius: 2px;
   }
+
+  .schedule-range {
+    position: absolute;
+    padding: 0 5px;
+    margin: 0 5px;
+    width: 100%;
+    font-size: 12px;
+    border: 1px solid #e7e7e7;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }

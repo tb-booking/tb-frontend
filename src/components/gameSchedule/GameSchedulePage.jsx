@@ -45,7 +45,7 @@ class GameSchedulePage extends Component {
     while (currentTime <= this.endTime) {
       timePoints.push({
         time: currentTime,
-        top: (100 / rangesAmount * rangeId)
+        style: {top: (100 / rangesAmount * rangeId) + '%'}
       });
       rangeId++;
       currentTime += this.timeInterval;
@@ -78,15 +78,20 @@ class GameSchedulePage extends Component {
     let ranges = [];
     let currentStartTime = this.startTime;
     let currentEndTime = this.startTime;
-    let currentStatus;
     const schedule = this.getSortedScheduleForChosenDate();
 
     const addScheduleRange = (start, end, status, user = '') => {
+      const generalHeight = this.endTime - this.startTime;
+
       ranges.push({
         startTime: start,
         endTime: end,
         status: status,
-        userName: user
+        userName: user,
+        style: {
+          top: (100 / generalHeight * (start - this.startTime)) + '%',
+          height: (100 / generalHeight * (end - start)) + '%'
+        }
       });
     };
 

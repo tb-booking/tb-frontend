@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {getImageUrl, convertSecToTime, convertTimeToSec} from '../../helpers/helpers';
+import {getImageUrl, convertSecToTime} from '../../helpers/helpers';
 import ScheduleItem from './ScheduleItem';
 
 const ScheduleTable = ({game, timePoints, scheduleRanges, pickedDate}) => {
@@ -12,14 +12,15 @@ const ScheduleTable = ({game, timePoints, scheduleRanges, pickedDate}) => {
         {pickedDate.toDateString()}
       </div>
       <div className="col-md-8 col-xs-7">
-        <div data-toggle="tooltip" data-placement="right" title="Tooltip on right" className="col-md-8 col-xs-8">
-          {timePoints.map((timePoint, timeIndex) => {
-            const style = {top: timePoint.top + '%'};
-            return (<div key={`time${timeIndex}`} className="schedule-time-item"
-                         style={style}>{convertSecToTime(timePoint.time)}</div>);
-          })}
+        <div className="col-md-8 col-xs-8">
+          {timePoints.map((timePoint, timeIndex) =>
+            <div key={`time${timeIndex}`} className="schedule-time-item"
+                 style={timePoint.style}>{convertSecToTime(timePoint.time)}</div>
+          )}
           <div className="schedule-day">
-            asdasdasdasd
+            {scheduleRanges.map(range =>
+              <ScheduleItem key={range.startTime} scheduleRange={range} />
+            )}
           </div>
         </div>
       </div>
