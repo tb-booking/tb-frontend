@@ -5,14 +5,14 @@ import {createStore} from 'redux';
 import rootReducer from '../../src/reducers';
 import initialState from '../../src/reducers/initialState';
 import * as gamesSchedulesActions from '../../src/actions/gamesSchedulesActions';
+import {formatDateAsDateString} from '../../src/helpers/helpers';
 
 describe('Store', () => {
   it('Should handle getAllGamesSchedules', () => {
     // arrange
     const store = createStore(rootReducer, initialState);
     const gamesSchedules = (() => {
-      const d = new Date();
-      const today = d.toISOString().substr(0, 10);
+      const today = formatDateAsDateString(new Date());
 
       return [
         {

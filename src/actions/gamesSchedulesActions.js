@@ -10,7 +10,7 @@ export function getAllGamesSchedules() {
   return dispatch => {
     dispatch(beginAjaxCall());
 
-    return GamesSchedulesApi.getAllTodayGamesSchedules().then(gamesSchedules => {
+    return GamesSchedulesApi.getAllGamesSchedulesSinceToday().then(gamesSchedules => {
       dispatch(getAllGamesSchedulesSuccess(gamesSchedules));
     }).catch(error => {
       dispatch(ajaxCallError(error));
