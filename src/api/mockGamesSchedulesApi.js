@@ -29,7 +29,7 @@ const gamesSchedules = (() => {
       gameId: 'tennis',
       date: today,
       startTime: convertTimeToSec('16:10'),
-      endTime: convertTimeToSec('16:35'),
+      endTime: convertTimeToSec('17:00'),
       userName: 'aoliinyk'
     },
     {

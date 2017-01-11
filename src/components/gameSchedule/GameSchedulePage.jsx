@@ -28,8 +28,6 @@ class GameSchedulePage extends Component {
       const newDate = new Date(e.date);
       this.setState({pickedDate: newDate});
     });
-
-    $('[data-toggle="tooltip"]').tooltip();
   }
 
   startTime = 32400; // 09:00
@@ -90,15 +88,12 @@ class GameSchedulePage extends Component {
         userName: user,
         style: {
           top: (100 / generalHeight * (start - this.startTime)) + '%',
-          height: (100 / generalHeight * (end - start)) + '%'
+          height: `calc(${(100 / generalHeight * (end - start)) + '%'} - 2px)`
         }
       });
     };
 
     schedule.forEach(s => {
-      // check start time
-      // currentStartTime = currentEndTime;
-
       if (s.startTime < currentEndTime) {
         // will write error and ignore wrong start time end start from last end time
         // TODO: send error to backend
