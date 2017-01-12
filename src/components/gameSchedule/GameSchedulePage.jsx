@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 // import {bindActionCreators} from 'redux';
 // import * as gamesSchedulesActions from '../../actions/gamesSchedulesActions';
 import {connect} from 'react-redux';
-import {formatDateForDatepicker, formatDateAsDateString} from '../../helpers/helpers';
+import {formatDateForDatepicker, getSortedScheduleForChosenDate} from '../../helpers/helpers';
 import {FREE_SCHEDULE_STATUS, BUSY_SCHEDULE_STATUS} from '../../helpers/constants';
 import ScheduleTable from './ScheduleTable';
 import './gameSchedule.scss';
@@ -51,37 +51,17 @@ class GameSchedulePage extends Component {
     return timePoints;
   }
 
-  getSortedScheduleForChosenDate(gamesSchedules) {
-    const compareSchedules = (a, b) => {
-      if (a.startTime < b.startTime) {
-        return -1;
-      } else if (a.startTime > b.startTime) {
-        return 1;
-      }
-      return 0;
-    };
-
-    const gameSchedules = gamesSchedules.reduce((schedules, currentScheduleItem) => {
-      if (currentScheduleItem.gameId === this.props.gameId && currentScheduleItem.date === formatDateAsDateString(this.state.pickedDate)) {
-        schedules.push(currentScheduleItem);
-      }
-      return schedules;
-    }, []);
-
-    gameSchedules.sort(compareSchedules);
-    return gameSchedules;
-  }
-
   countScheduleRanges(gamesSchedules) {
     let ranges = [];
     let currentStartTime = this.startTime;
     let currentEndTime = this.startTime;
-    const schedule = this.getSortedScheduleForChosenDate(gamesSchedules);
+    const schedule = getSortedScheduleForChosenDate(gamesSchedules, this.props.gameId, this.state.pickedDate);
 
-    const addScheduleRange = (start, end, status, user = '') => {
+    const addScheduleRange = (start, end, status, user = '', id = -1) => {
       const generalHeight = this.endTime - this.startTime;
 
       ranges.push({
+        id: id,
         startTime: start,
         endTime: end,
         status: status,
@@ -119,7 +99,7 @@ class GameSchedulePage extends Component {
         } else {
           currentEndTime = s.endTime;
         }
-        addScheduleRange(currentStartTime, currentEndTime, BUSY_SCHEDULE_STATUS, s.userName);
+        addScheduleRange(currentStartTime, currentEndTime, BUSY_SCHEDULE_STATUS, s.userName, s.id);
       }
     });
 

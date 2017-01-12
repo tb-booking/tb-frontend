@@ -1,3 +1,5 @@
+$break-small: 768px;
+
 #app {
   min-width: 600px;
   max-width: 950px;
@@ -33,12 +35,12 @@
   border-bottom: 1px solid #ffffff;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $break-small) {
   .navbar .divider-horizontal {
     display: none;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: $break-small) {
   .navbar .divider-vertical {
     display: none;
   }

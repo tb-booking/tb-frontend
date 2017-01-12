@@ -61,3 +61,31 @@ export const convertTimeToSec = (time) => {
   const splitTime = time.split(':');
   return (parseInt(splitTime[0]) * 60 + parseInt(splitTime[1])) * 60;
 };
+
+/**
+ * Chose and sort games schedules
+ * @param {array} gamesSchedules - games schedules
+ * @param {string} gameId - chosen game id
+ * @param {string} pickedDate - chosen date
+ * @returns {array} - sorted gamesSchedules for chosen game and date
+ */
+export const getSortedScheduleForChosenDate = (gamesSchedules, gameId, pickedDate) => {
+  const compareSchedules = (a, b) => {
+    if (a.startTime < b.startTime) {
+      return -1;
+    } else if (a.startTime > b.startTime) {
+      return 1;
+    }
+    return 0;
+  };
+
+  const gameSchedules = gamesSchedules.reduce((schedules, currentScheduleItem) => {
+    if (currentScheduleItem.gameId === gameId && currentScheduleItem.date === formatDateAsDateString(pickedDate)) {
+      schedules.push(currentScheduleItem);
+    }
+    return schedules;
+  }, []);
+
+  gameSchedules.sort(compareSchedules);
+  return gameSchedules;
+};
