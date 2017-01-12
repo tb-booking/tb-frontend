@@ -10,13 +10,20 @@ class ScheduleItem extends Component {
     $('[data-toggle="tooltip"]').tooltip();
   }
 
+  componentWillUnmount() {
+    $('[data-toggle="tooltip"]').mouseleave();
+  }
+
   render() {
     const scheduleRange = this.props.scheduleRange;
     const startTime = convertSecToTime(scheduleRange.startTime);
     const endTime = convertSecToTime(scheduleRange.endTime);
+
     return (
-      <div className="schedule-range" data-toggle="tooltip" data-placement="top"
-           title={`${startTime} - ${endTime} ${scheduleRange.userName ? ':' : ''} ${scheduleRange.userName}`} style={scheduleRange.style}>
+      <div
+        className={`schedule-range ${scheduleRange.status} ${this.props.selected ? 'schedule-range-selected' : ''}`}
+        title={`${startTime} - ${endTime} ${scheduleRange.userName ? ':' : ''} ${scheduleRange.userName}`}
+        data-toggle="tooltip" data-placement="top" style={scheduleRange.style} onClick={this.props.onClick}>
         <span>{scheduleRange.userName ? scheduleRange.userName : ''}</span>
       </div>
     );
@@ -24,7 +31,9 @@ class ScheduleItem extends Component {
 }
 
 ScheduleItem.propTypes = {
-  scheduleRange: PropTypes.object.isRequired
+  scheduleRange: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired
 };
 
 export default ScheduleItem;

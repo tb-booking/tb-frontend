@@ -51,7 +51,7 @@ class GameSchedulePage extends Component {
     return timePoints;
   }
 
-  getSortedScheduleForChosenDate() {
+  getSortedScheduleForChosenDate(gamesSchedules) {
     const compareSchedules = (a, b) => {
       if (a.startTime < b.startTime) {
         return -1;
@@ -61,7 +61,7 @@ class GameSchedulePage extends Component {
       return 0;
     };
 
-    const gameSchedules = this.props.gamesSchedules.reduce((schedules, currentScheduleItem) => {
+    const gameSchedules = gamesSchedules.reduce((schedules, currentScheduleItem) => {
       if (currentScheduleItem.gameId === this.props.gameId && currentScheduleItem.date === formatDateAsDateString(this.state.pickedDate)) {
         schedules.push(currentScheduleItem);
       }
@@ -72,11 +72,11 @@ class GameSchedulePage extends Component {
     return gameSchedules;
   }
 
-  countScheduleRanges() {
+  countScheduleRanges(gamesSchedules) {
     let ranges = [];
     let currentStartTime = this.startTime;
     let currentEndTime = this.startTime;
-    const schedule = this.getSortedScheduleForChosenDate();
+    const schedule = this.getSortedScheduleForChosenDate(gamesSchedules);
 
     const addScheduleRange = (start, end, status, user = '') => {
       const generalHeight = this.endTime - this.startTime;
@@ -133,7 +133,7 @@ class GameSchedulePage extends Component {
   render() {
     return (
       <ScheduleTable pickedDate={this.state.pickedDate} game={this.props.game}
-                     timePoints={this.countTimePoints()} scheduleRanges={this.countScheduleRanges()} />
+                     timePoints={this.countTimePoints()} scheduleRanges={this.countScheduleRanges(this.props.gamesSchedules)} />
     );
   }
 }

@@ -7,8 +7,28 @@ class ScheduleTable extends Component {
     super(props, context);
 
     this.state = {
-      scheduleRanges: props.scheduleRanges
+      scheduleRanges: Object.assign([], props.scheduleRanges),
+      selectedRange: -1
     };
+
+    this.onScheduleClick = this.onScheduleClick.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      scheduleRanges: Object.assign([], nextProps.scheduleRanges),
+      selectedRange: -1
+    });
+  }
+
+  onScheduleClick(idx) {
+    this.state.scheduleRanges.forEach((range) => {
+      if (this.state.selectedRange === idx) {
+        this.setState({selectedRange: -1});
+      } else {
+        this.setState({selectedRange: idx});
+      }
+    });
   }
 
   render() {
@@ -27,8 +47,9 @@ class ScheduleTable extends Component {
                    style={timePoint.style}>{convertSecToTime(timePoint.time)}</div>
             )}
             <div className="schedule-day">
-              {this.props.scheduleRanges.map(range =>
-                <ScheduleItem key={`${range.startTime}-${range.endTime}`} scheduleRange={range} />
+              {this.props.scheduleRanges.map((range, idx) =>
+                <ScheduleItem key={`${range.startTime}-${range.endTime}`} scheduleRange={range}
+                              onClick={() => this.onScheduleClick(idx)} selected={idx === this.state.selectedRange} />
               )}
             </div>
           </div>

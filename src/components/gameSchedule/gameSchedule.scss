@@ -33,6 +33,7 @@
   }
 
   .schedule-range {
+    color: white;
     position: absolute;
     padding: 0 5px;
     margin: 2px;
@@ -47,5 +48,23 @@
     display: flex;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .schedule-range:hover {
+    box-shadow: 0 0 3px #a5a5a5;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .schedule-range-selected {
+    border-color: #3174ad !important;
+    background-color: #3174ad !important;
+  }
+  .FREE_SCHEDULE_STATUS {
+  }
+  .BUSY_SCHEDULE_STATUS {
+    border-color: #265985;
+    background-color: #265985;
+  }
+  .BUSY_SCHEDULE_STATUS:hover {
+    box-shadow: 0 0 3px #1f4368;
   }
 }
