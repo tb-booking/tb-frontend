@@ -28,7 +28,7 @@ const gamesSchedules = (() => {
       id: 3,
       gameId: 'tennis',
       date: today,
-      startTime: convertTimeToSec('16:10'),
+      startTime: convertTimeToSec('16:15'),
       endTime: convertTimeToSec('17:00'),
       userName: 'aoliinyk'
     },

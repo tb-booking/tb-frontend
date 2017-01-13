@@ -31,7 +31,7 @@ class GameSchedulePage extends Component {
   }
 
   startTime = 32400; // 09:00
-  endTime = 75600;   // 20:00
+  endTime = 75600;   // 21:00
   timeInterval = 3600;  // 1 hour
 
   countTimePoints() {

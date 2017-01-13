@@ -69,7 +69,7 @@ class ScheduleTable extends Component {
         </div>
         <div className="col-md-8 col-xs-12">
           <div className="col-md-6 col-xs-6">
-            <div className="col-md-12 col-sm-9 col-xs-12" style={{float: 'none'}}>
+            <div className="col-md-12 col-sm-9 col-xs-12" style={{float: 'none', margin: '0 auto'}}>
               {this.props.timePoints.map((timePoint, timeIndex) =>
                 <div key={`time${timeIndex}`} className="schedule-time-item"
                      style={timePoint.style}>{convertSecToTime(timePoint.time)}</div>

@@ -64,21 +64,25 @@ $break-big: 991px;
     align-items: center; /* align vertical */
     transition: all 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
   }
-  .schedule-range:hover {
-    box-shadow: 0 0 3px #a5a5a5;
-  }
-  .schedule-range-selected {
-    //border-color: #3174ad !important;
-    border-color: #3181ba !important;
-    background-color: #3181ba !important;
-  }
   .FREE_SCHEDULE_STATUS {
+    color: lightgrey;
+  }
+  .FREE_SCHEDULE_STATUS:hover {
+    box-shadow: 0 0 5px #d9eeff;
+  }
+  .FREE_SCHEDULE_STATUS.schedule-range-selected {
+    border-color: #d9eeff !important;
+    background-color: #d9eeff !important;
   }
   .BUSY_SCHEDULE_STATUS {
     border-color: #265985;
     background-color: #265985;
   }
   .BUSY_SCHEDULE_STATUS:hover {
-    box-shadow: 0 0 3px #1f4368;
+    box-shadow: 0 0 3px #265985;
+  }
+  .BUSY_SCHEDULE_STATUS.schedule-range-selected {
+    border-color: #3174ad !important;
+    background-color: #3174ad !important;
   }
 }
