@@ -51,6 +51,29 @@ class GamesApi {
       }, delay);
     });
   }
+
+  static saveSchedule(schedule) {
+    schedule = Object.assign({}, schedule); // to avoid manipulating object passed in.
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // Simulate server-side validation
+        // const minScheduleTitleLength = 1;
+        // if (schedule.title.length < minScheduleTitleLength) {
+        //   reject(`Title must be at least ${minScheduleTitleLength} characters.`);
+        // }
+
+        if (schedule.id > -1) {
+        //   const scheduleIndex = gamesSchedules.findIndex(a => a.id === schedule.id);
+        //   gamesSchedules.splice(scheduleIndex, 1, schedule);
+        } else {
+          schedule.id = gamesSchedules[gamesSchedules.length - 1].id + 1;
+          // gamesSchedules.push(schedule);
+        }
+
+        resolve(schedule);
+      }, delay);
+    });
+  }
 }
 
 export default GamesApi;

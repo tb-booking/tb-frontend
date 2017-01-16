@@ -25,7 +25,7 @@ describe('Games Async Actions', () => {
       {type: types.LOAD_GAMES_SCHEDULES_SUCCESS, body: []}
     ];
 
-    const store = mockStore({courses: []}, expectedActions, done);
+    const store = mockStore({schedules: []}, expectedActions, done);
     store.dispatch(gamesSchedulesActions.getAllGamesSchedules()).then(() => {
       const actions = store.getActions();
       expect(actions[0].type).toEqual(types.BEGIN_AJAX_CALL);

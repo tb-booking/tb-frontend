@@ -11,7 +11,7 @@ import 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'toastr/build/toastr.min.css';
+import 'toastr/build/toastr.min.css';
 import './styles/styles.scss';
 
 const store = configureStore();

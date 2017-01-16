@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {getImageUrl} from '../../helpers/helpers';
 
-const CourseListRow = ({game, onGameRowClick}) => {
+const GamesListRow = ({game, onGameRowClick}) => {
   onGameRowClick = onGameRowClick.bind(this, game.id);
 
   return (
@@ -13,9 +13,9 @@ const CourseListRow = ({game, onGameRowClick}) => {
   );
 };
 
-CourseListRow.propTypes = {
+GamesListRow.propTypes = {
   game: PropTypes.object.isRequired,
   onGameRowClick: PropTypes.func.isRequired
 };
 
-export default CourseListRow;
+export default GamesListRow;

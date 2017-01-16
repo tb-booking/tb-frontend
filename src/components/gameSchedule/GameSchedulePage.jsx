@@ -1,6 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-// import {bindActionCreators} from 'redux';
-// import * as gamesSchedulesActions from '../../actions/gamesSchedulesActions';
 import {connect} from 'react-redux';
 import {formatDateForDatepicker, getSortedScheduleForChosenDate} from '../../helpers/helpers';
 import {FREE_SCHEDULE_STATUS, BUSY_SCHEDULE_STATUS} from '../../helpers/constants';
@@ -112,8 +110,8 @@ class GameSchedulePage extends Component {
 
   render() {
     return (
-      <ScheduleTable pickedDate={this.state.pickedDate} game={this.props.game}
-                     timePoints={this.countTimePoints()} scheduleRanges={this.countScheduleRanges(this.props.gamesSchedules)} />
+      <ScheduleTable pickedDate={this.state.pickedDate} game={this.props.game} timePoints={this.countTimePoints()}
+                     scheduleRanges={this.countScheduleRanges(this.props.gamesSchedules)} />
     );
   }
 }
@@ -122,7 +120,6 @@ GameSchedulePage.propTypes = {
   gameId: PropTypes.string.isRequired,
   game: PropTypes.object.isRequired,
   gamesSchedules: PropTypes.array.isRequired
-  // actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -131,11 +128,5 @@ function mapStateToProps(state, ownProps) {
     gamesSchedules: state.gamesSchedules
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(gamesSchedulesActions, dispatch)
-//   };
-// }
 
 export default connect(mapStateToProps)(GameSchedulePage);
