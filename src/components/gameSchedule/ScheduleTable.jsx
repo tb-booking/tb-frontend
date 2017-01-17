@@ -87,7 +87,7 @@ class ScheduleTable extends Component {
             {
               this.state.selectedRangeIdx > -1 ? (
                   <ScheduleEdit selectedRange={this.state.scheduleRanges[this.state.selectedRangeIdx]}
-                                editableRange={this.countEditableRange()} />
+                                editableRange={this.countEditableRange()} game={this.props.game} date={this.props.pickedDate} />
                 ) : ('')
             }
           </div>

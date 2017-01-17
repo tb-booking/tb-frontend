@@ -1,7 +1,7 @@
 import delay from './delay';
 import {formatDateAsDateString, convertTimeToSec} from '../helpers/helpers';
 
-const gamesSchedules = (() => {
+let gamesSchedules = (() => {
   const d = new Date();
   const today = formatDateAsDateString(d);
   d.setDate(d.getDate() + 1);
@@ -57,17 +57,21 @@ class GamesApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
-        // const minScheduleTitleLength = 1;
-        // if (schedule.title.length < minScheduleTitleLength) {
-        //   reject(`Title must be at least ${minScheduleTitleLength} characters.`);
-        // }
+        if (schedule.userName.length < 3) {
+          reject('User name must be at least 3 characters.');
+        }
+        if (!(schedule.startTime < schedule.endTime)) {
+          reject('End time must be bigger then start time.');
+        }
 
-        if (schedule.id > -1) {
-        //   const scheduleIndex = gamesSchedules.findIndex(a => a.id === schedule.id);
-        //   gamesSchedules.splice(scheduleIndex, 1, schedule);
+        if (schedule.id > 0) {
+          gamesSchedules = [
+            ...gamesSchedules.filter(gameSchedule => gameSchedule.id !== schedule.id),
+            schedule
+          ];
         } else {
-          schedule.id = gamesSchedules[gamesSchedules.length - 1].id + 1;
-          // gamesSchedules.push(schedule);
+          schedule.id = gamesSchedules.length + 1;
+          gamesSchedules = [...gamesSchedules, schedule];
         }
 
         resolve(schedule);

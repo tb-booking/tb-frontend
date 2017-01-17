@@ -51,17 +51,13 @@ class ScheduleEdit extends Component {
   saveSchedule(event) {
     event.preventDefault();
 
-    // if (!this.courseFormIsValid()) {
-    //   return;
-    // }
-
     // this.setState({saving: true});
     const selectedRange = this.props.selectedRange;
 
     this.props.actions.saveSchedule({
       id: selectedRange.id,
-      gameId: 'tennis',
-      date: formatDateAsDateString(new Date()),
+      gameId: this.props.game.id,
+      date: formatDateAsDateString(this.props.date),
       startTime: this.state.selectedStartTime,
       endTime: this.state.selectedEndTime,
       userName: this.state.userName
@@ -111,6 +107,8 @@ class ScheduleEdit extends Component {
 }
 
 ScheduleEdit.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
+  game: PropTypes.object.isRequired,
   selectedRange: PropTypes.object.isRequired,
   editableRange: PropTypes.object.isRequired,
   actions: PropTypes.object
