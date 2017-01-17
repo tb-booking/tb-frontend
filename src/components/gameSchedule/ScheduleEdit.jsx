@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Button, ControlLabel, FormGroup, FormControl} from 'react-bootstrap';
 import TimePicker from 'react-bootstrap-time-picker';
-import {convertSecToTime, convertTimeToSec, formatDateAsDateString} from '../../helpers/helpers';
+import {convertSecToTime, formatDateAsDateString} from '../../helpers/helpers';
 import {BUSY_SCHEDULE_STATUS} from '../../helpers/constants';
 import toastr from 'toastr';
 import {connect} from 'react-redux';
@@ -63,7 +63,7 @@ class ScheduleEdit extends Component {
       userName: this.state.userName
     })
       .then(() => {
-        toastr.success('Course saved!');
+        toastr.success('Schedule range saved!');
       })
       .catch(error => {
         // this.setState({saving: false});
@@ -77,9 +77,9 @@ class ScheduleEdit extends Component {
 
     return (
       <div className="schedule-edit">
-        <h3>{selectedRange.status === BUSY_SCHEDULE_STATUS ? 'Edit current range' : 'Create new range'} {selectedRange.id}</h3>
+        <h3>{selectedRange.status === BUSY_SCHEDULE_STATUS ? 'Edit current range' : 'Create new range'}</h3>
 
-        <form>
+        <div>
           <FormGroup>
             <ControlLabel>User name</ControlLabel>
             <FormControl type="text" value={this.state.userName} placeholder="User name"
@@ -100,7 +100,7 @@ class ScheduleEdit extends Component {
           <FormGroup>
             <Button bsStyle="primary" onClick={this.saveSchedule}>Save changes</Button>
           </FormGroup>
-        </form>
+        </div>
       </div>
     );
   }

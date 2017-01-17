@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 
-      // {/*<button type="button" className="btn btn-default navbar-btn navbar-right">Sign in</button>*/}
 const UsernameItem = ({username}) => {
   if (!username) {
     return (
