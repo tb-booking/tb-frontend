@@ -1,8 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import {getImageUrl, convertSecToTime} from '../../helpers/helpers';
+import {getImageUrl, convertSecToTime, formatDateAsDateString} from '../../helpers/helpers';
 import {FREE_SCHEDULE_STATUS, BUSY_SCHEDULE_STATUS} from '../../helpers/constants';
 import ScheduleItem from './ScheduleItem';
 import ScheduleEdit from './ScheduleEdit';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as gamesSchedulesActions from '../../actions/gamesSchedulesActions';
+import toastr from 'toastr';
 
 class ScheduleTable extends Component {
   constructor(props, context) {
@@ -10,31 +14,44 @@ class ScheduleTable extends Component {
 
     this.state = {
       scheduleRanges: Object.assign([], props.scheduleRanges),
-      selectedRangeIdx: -1
+      selectedRangeIdx: -1,
+      selectedRange: {}
     };
 
     this.onScheduleClick = this.onScheduleClick.bind(this);
+    this.countEditableRange = this.countEditableRange.bind(this);
+
+    this.updateStartTime = this.updateStartTime.bind(this);
+    this.updateEndTime = this.updateEndTime.bind(this);
+    this.updateUserName = this.updateUserName.bind(this);
+    this.saveSchedule = this.saveSchedule.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       scheduleRanges: Object.assign([], nextProps.scheduleRanges),
-      selectedRangeIdx: -1
+      selectedRangeIdx: -1,
+      selectedRange: {}
     });
   }
 
   onScheduleClick(idx) {
-    this.state.scheduleRanges.forEach((range) => {
-      if (this.state.selectedRangeIdx === idx) {
-        this.setState({selectedRangeIdx: -1});
-      } else {
-        this.setState({selectedRangeIdx: idx});
-      }
-    });
+    if (this.state.selectedRangeIdx === idx) {
+      this.setState({
+        selectedRange: {},
+        editableRange: {},
+        selectedRangeIdx: -1
+      });
+    } else {
+      this.setState({
+        selectedRange: Object.assign({}, this.state.scheduleRanges[idx]),
+        editableRange: this.countEditableRange(idx),
+        selectedRangeIdx: idx
+      });
+    }
   }
 
-  countEditableRange() {
-    const idx = this.state.selectedRangeIdx;
+  countEditableRange(idx) {
     const scheduleRange = this.state.scheduleRanges[idx];
 
     let startTime = scheduleRange.startTime;
@@ -53,6 +70,42 @@ class ScheduleTable extends Component {
       startTime: startTime,
       endTime: endTime
     };
+  }
+
+  updateStartTime(time) {
+    this.setState({selectedRange: Object.assign({}, this.state.selectedRange, {startTime: time})});
+  }
+
+  updateEndTime(time) {
+    this.setState({selectedRange: Object.assign({}, this.state.selectedRange, {endTime: time})});
+  }
+
+  updateUserName(e) {
+    this.setState({selectedRange: Object.assign({}, this.state.selectedRange, {userName: e.target.value})});
+  }
+
+  saveSchedule(event) {
+    event.preventDefault();
+
+    // this.setState({saving: true});
+    const selectedRange = this.state.selectedRange;
+
+    this.props.actions.saveSchedule({
+      id: selectedRange.id,
+      gameId: this.props.game.id,
+      date: formatDateAsDateString(this.props.pickedDate),
+      startTime: selectedRange.startTime,
+      endTime: selectedRange.endTime,
+      userName: selectedRange.userName
+    })
+      .then(() => {
+        // this.setState({saving: false});
+        toastr.success('Schedule range saved!');
+      })
+      .catch(error => {
+        // this.setState({saving: false});
+        toastr.error(error);
+      });
   }
 
   render() {
@@ -86,8 +139,13 @@ class ScheduleTable extends Component {
           <div className="col-md-6 col-xs-6">
             {
               this.state.selectedRangeIdx > -1 ? (
-                  <ScheduleEdit selectedRange={this.state.scheduleRanges[this.state.selectedRangeIdx]}
-                                editableRange={this.countEditableRange()} game={this.props.game} date={this.props.pickedDate} />
+                  <ScheduleEdit selectedRange={this.state.selectedRange}
+                                editableRange={this.state.editableRange}
+
+                                saveSchedule={this.saveSchedule}
+                                updateStartTime={this.updateStartTime}
+                                updateEndTime={this.updateEndTime}
+                                updateUserName={this.updateUserName} />
                 ) : ('')
             }
           </div>
@@ -96,12 +154,24 @@ class ScheduleTable extends Component {
     );
   }
 }
+/*
+ <ScheduleEdit selectedRange={this.state.scheduleRanges[this.state.selectedRangeIdx]}
+ editableRange={this.countEditableRange(this.state.selectedRangeIdx)}
+ game={this.props.game} date={this.props.pickedDate} />
+*/
 
 ScheduleTable.propTypes = {
   pickedDate: PropTypes.instanceOf(Date).isRequired,
   game: PropTypes.object.isRequired,
   timePoints: PropTypes.array.isRequired,
-  scheduleRanges: PropTypes.array.isRequired
+  scheduleRanges: PropTypes.array.isRequired,
+  actions: PropTypes.object
 };
 
-export default ScheduleTable;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(gamesSchedulesActions, dispatch)
+  };
+}
+
+export default connect(() => {return {};}, mapDispatchToProps)(ScheduleTable);
