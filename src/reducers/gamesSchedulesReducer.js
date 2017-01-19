@@ -18,6 +18,11 @@ export default function gamesSchedulesReducer(state = initialState.gamesSchedule
         Object.assign({}, action.payload)
       ];
 
+    case types.REMOVE_SCHEDULE_SUCCESS:
+      return [
+        ...state.filter(schedule => schedule.id !== action.payload)
+      ];
+
     default:
       return state;
   }

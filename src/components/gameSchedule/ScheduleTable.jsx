@@ -25,6 +25,7 @@ class ScheduleTable extends Component {
     this.updateEndTime = this.updateEndTime.bind(this);
     this.updateUserName = this.updateUserName.bind(this);
     this.saveSchedule = this.saveSchedule.bind(this);
+    this.removeSchedule = this.removeSchedule.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -108,6 +109,18 @@ class ScheduleTable extends Component {
       });
   }
 
+  removeSchedule() {
+    this.props.actions.removeSchedule(this.state.selectedRange.id)
+      .then(() => {
+        // this.setState({saving: false});
+        toastr.success('Schedule range removed!');
+      })
+      .catch(error => {
+        // this.setState({saving: false});
+        toastr.error(error);
+      });
+  }
+
   render() {
     return (
       <div className="row" id="game-schedule">
@@ -142,6 +155,7 @@ class ScheduleTable extends Component {
                   <ScheduleEdit selectedRange={this.state.selectedRange}
                                 editableRange={this.state.editableRange}
                                 saveSchedule={this.saveSchedule}
+                                removeSchedule={this.removeSchedule}
                                 updateStartTime={this.updateStartTime}
                                 updateEndTime={this.updateEndTime}
                                 updateUserName={this.updateUserName} />

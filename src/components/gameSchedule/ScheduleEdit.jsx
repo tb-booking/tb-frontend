@@ -1,10 +1,16 @@
 import React, {Component, PropTypes} from 'react';
-import {Button, ControlLabel, FormGroup, FormControl} from 'react-bootstrap';
+import {Button, ControlLabel, FormGroup, FormControl, ButtonToolbar} from 'react-bootstrap';
 import TimePicker from 'react-bootstrap-time-picker';
 import {convertSecToTime} from '../../helpers/helpers';
 import {BUSY_SCHEDULE_STATUS} from '../../helpers/constants';
 
-const ScheduleEdit = ({selectedRange, editableRange, updateUserName, updateStartTime, updateEndTime, saveSchedule}) => {
+const ScheduleEdit = ({selectedRange, editableRange, updateUserName, updateStartTime, updateEndTime, saveSchedule, removeSchedule}) => {
+  const editButton = (
+    selectedRange.status === BUSY_SCHEDULE_STATUS ?
+      <Button bsStyle="primary" onClick={removeSchedule}>Remove range</Button> :
+      null
+  );
+
   return (
     <div className="schedule-edit">
       <h3>{selectedRange.status === BUSY_SCHEDULE_STATUS ? 'Edit current range' : 'Create new range'}</h3>
@@ -28,7 +34,10 @@ const ScheduleEdit = ({selectedRange, editableRange, updateUserName, updateStart
                       end={convertSecToTime(editableRange.endTime)} step={15} format={24} />
         </FormGroup>
         <FormGroup>
-          <Button bsStyle="primary" onClick={saveSchedule}>Save changes</Button>
+          <ButtonToolbar>
+            <Button bsStyle="primary" onClick={saveSchedule}>Save changes</Button>
+            {editButton}
+          </ButtonToolbar>
         </FormGroup>
       </div>
     </div>
@@ -41,6 +50,7 @@ ScheduleEdit.propTypes = {
   editableRange: PropTypes.object.isRequired,
   updateUserName: PropTypes.func.isRequired,
   saveSchedule: PropTypes.func.isRequired,
+  removeSchedule: PropTypes.func.isRequired,
   updateStartTime: PropTypes.func.isRequired,
   updateEndTime: PropTypes.func.isRequired
 };

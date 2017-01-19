@@ -14,6 +14,10 @@ export function updateScheduleSuccess(schedule) {
   return {type: types.UPDATE_SCHEDULE_SUCCESS, payload: schedule};
 }
 
+export function removeScheduleSuccess(scheduleId) {
+  return {type: types.REMOVE_SCHEDULE_SUCCESS, payload: scheduleId};
+}
+
 export function getAllGamesSchedules() {
   return dispatch => {
     dispatch(beginAjaxCall());
@@ -37,6 +41,19 @@ export function saveSchedule(gameSchedule) {
       } else {
         dispatch(createScheduleSuccess(schedule));
       }
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw(error);
+    });
+  };
+}
+
+export function removeSchedule(gameScheduleId) {
+  return dispatch => {
+    dispatch(beginAjaxCall());
+
+    return GamesSchedulesApi.removeSchedule(gameScheduleId).then(scheduleId => {
+      dispatch(removeScheduleSuccess(scheduleId));
     }).catch(error => {
       dispatch(ajaxCallError(error));
       throw(error);

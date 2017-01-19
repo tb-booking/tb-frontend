@@ -78,6 +78,17 @@ class GamesApi {
       }, delay);
     });
   }
+
+  static removeSchedule(scheduleId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        gamesSchedules = [
+          ...gamesSchedules.filter(gameSchedule => gameSchedule.id !== scheduleId)
+        ];
+        resolve(scheduleId);
+      }, delay);
+    });
+  }
 }
 
 export default GamesApi;
