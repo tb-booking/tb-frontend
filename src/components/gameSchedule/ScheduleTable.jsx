@@ -141,7 +141,6 @@ class ScheduleTable extends Component {
               this.state.selectedRangeIdx > -1 ? (
                   <ScheduleEdit selectedRange={this.state.selectedRange}
                                 editableRange={this.state.editableRange}
-
                                 saveSchedule={this.saveSchedule}
                                 updateStartTime={this.updateStartTime}
                                 updateEndTime={this.updateEndTime}
@@ -154,11 +153,6 @@ class ScheduleTable extends Component {
     );
   }
 }
-/*
- <ScheduleEdit selectedRange={this.state.scheduleRanges[this.state.selectedRangeIdx]}
- editableRange={this.countEditableRange(this.state.selectedRangeIdx)}
- game={this.props.game} date={this.props.pickedDate} />
-*/
 
 ScheduleTable.propTypes = {
   pickedDate: PropTypes.instanceOf(Date).isRequired,
