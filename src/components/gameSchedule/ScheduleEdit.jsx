@@ -7,7 +7,7 @@ import {BUSY_SCHEDULE_STATUS} from '../../helpers/constants';
 const ScheduleEdit = ({selectedRange, editableRange, updateUserName, updateStartTime, updateEndTime, saveSchedule, removeSchedule}) => {
   const editButton = (
     selectedRange.status === BUSY_SCHEDULE_STATUS ?
-      <Button bsStyle="primary" onClick={removeSchedule}>Remove range</Button> :
+      <Button bsStyle="danger" onClick={removeSchedule}>Remove range</Button> :
       null
   );
 
